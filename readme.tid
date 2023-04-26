@@ -1,0 +1,30 @@
+title: $:/plugins/bramton/tw5-yyyymmdd/readme
+
+Provides two additional suffixes for the format filter operator.
+
+The `duntil` format suffix returns the number of days until the (re)occurence of the specified date.
+
+The `age` format suffix returns the age in years of the specified date.
+
+!! Details
+Currently the only supported date format is `yyyy-mm-dd`.
+
+
+!! Examples
+
+```
+<$list filter="[tag[Person]has[dob]] :sort:number[{!!dob}format:duntil[]] +[limit[5]]
+">
+  Birthday of <$link to={{!!title}}/> in {{{ [<currentTiddler>get[dob]format:duntil[]] }}} days.
+  <br>
+</$list>
+```
+
+!! Caveats
+
+
+```
+<$view field=dob format=duntil />
+```
+
+Does not work, formats are hardcoded in the `$view` widget.
